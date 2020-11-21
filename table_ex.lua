@@ -304,3 +304,19 @@ function table.indexOf(t, item, checkIsArray)
 
     return nil
 end
+
+---将一个函数应用到 table 上的每一个元素
+---@param t table
+---@param func fun(k:any, v:any):any
+---@return table
+function table.map(t, func)
+    assert(t, "Table map error, source table cannot be nil")
+
+    local ret = {}
+
+    for k, v in pairs(t) do
+        ret[k] = func(k, v)
+    end
+
+    return ret
+end
